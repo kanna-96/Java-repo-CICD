@@ -27,7 +27,7 @@ pipeline {
             post {
                 success {
                     script {
-                        def server = Artifactory.newServer(url: 'http://13.127.200.25:8081/artifactory/', credentialsId: 'jfrog')
+                        def server = Artifactory.newServer(url: 'http://13.126.88.138:8081/', credentialsId: 'jfrog')
                         def rtMaven = Artifactory.newMavenBuild()
                         rtMaven.deployer server: server, releaseRepo: 'libs-release/', snapshotRepo: 'libs-snapshot/'
                         rtMaven.tool = 'maven'
@@ -42,7 +42,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'curl -o jenkins-test-2.0.jar http://13.127.200.25:8081/artifactory/libs-release/com/example/jenkins-test/2.0/jenkins-test-2.0.jar'
+                    sh 'curl -o jenkins-test-2.0.jar http://13.126.88.138:8081/artifactory/libs-release/com/example/jenkins-test/2.0/jenkins-test-2.0.jar'
                     sh '''
                         aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin 804480554088.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
                         docker build -t sstest .

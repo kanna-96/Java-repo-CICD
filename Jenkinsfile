@@ -13,7 +13,7 @@ pipeline {
             }
             steps{
                 withSonarQubeEnv('sonarCodeSS') { 
-                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=ss"
+                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=sonardemo"
                  }
                 }
             }

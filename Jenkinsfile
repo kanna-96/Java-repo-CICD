@@ -27,7 +27,7 @@ pipeline {
             post {
                 success {
                     script {
-                        def server = Artifactory.newServer(url: 'http://13.126.88.138:8081/artifactory', credentialsId: 'jfrog')
+                        def server = Artifactory.newServer(url: 'http://13.127.15.70:8081/artifactory', credentialsId: 'jfrog')
                         def rtMaven = Artifactory.newMavenBuild()
                         rtMaven.deployer server: server, releaseRepo: 'libs-release/', snapshotRepo: 'libs-snapshot/'
                         rtMaven.tool = 'maven'
@@ -44,10 +44,10 @@ pipeline {
                 script {
                     sh 'curl -o jenkins-test-2.0.jar http://13.126.88.138:8081/artifactory/libs-release/com/example/jenkins-test/2.0/jenkins-test-2.0.jar'
                     sh '''
-                        aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin 804480554088.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
-                        docker build -t sstest .
-                        docker tag sstest:latest 804480554088.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/sstest:latest
-                        docker push 804480554088.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/sstest:latest
+                        aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 296062591681.dkr.ecr.ap-south-1.amazonaws.com
+                        docker build -t testing .
+                        docker tag testing:latest 296062591681.dkr.ecr.ap-south-1.amazonaws.com/testing:latest
+                        docker push 296062591681.dkr.ecr.ap-south-1.amazonaws.com/testing:latest
                         aws eks update-kubeconfig --region ap-south-1 --name cluster-eksctl
 			kubectl version --client
                         kubectl apply -f test.yaml

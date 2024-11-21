@@ -44,7 +44,7 @@ pipeline {
                 script {
                     sh 'curl -o jenkins-test-2.0.jar http://13.127.15.70:8081/artifactory/libs-release/com/example/jenkins-test/2.0/jenkins-test-2.0.jar'
                     sh '''
-                        aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin 296062591681.dkr.ecr.ap-south-1.amazonaws.com
+                        aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin 296062591681.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
                         docker build -t testing .
                         docker tag testing:latest 296062591681.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/testing:latest
                         docker push 296062591681.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/testing:latest

@@ -42,7 +42,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'curl -o jenkins-test-2.0.jar http://13.127.15.70:8081/artifactory/libs-release/com/example/jenkins-test/2.0/jenkins-test-2.0.jar'
+                    sh 'curl -o jenkins-test-2.0.jar http://13.233.83.12:8081/artifactory/libs-release/com/example/jenkins-test/2.0/jenkins-test-2.0.jar'
                     sh '''
                         aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 296062591681.dkr.ecr.ap-south-1.amazonaws.com
                         docker build -t testing .

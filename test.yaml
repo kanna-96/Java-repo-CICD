@@ -18,7 +18,7 @@ spec:
   storageClassName: ss-efs-sc
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: fs-06046f9612c4b4aeb
+    volumeHandle: fs-0b4ef20266fb78993
 ---
 
 apiVersion: v1
@@ -58,7 +58,7 @@ spec:
       automountServiceAccountToken: false
       restartPolicy: Always
       containers:
-      - image: 804480554088.dkr.ecr.ap-south-1.amazonaws.com/sstest
+      - image: 296062591681.dkr.ecr.ap-south-1.amazonaws.com/testing
         name: ss
         imagePullPolicy: Always
         env:
@@ -98,8 +98,8 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0
-    alb.ingress.kubernetes.io/subnets: subnet-0d96d69c365371d74,
-      subnet-075a676b48275b670, subnet-0f5ef5871dc9df07e
+    alb.ingress.kubernetes.io/subnets: subnet-0f314d80498339dc4,
+      subnet-06223421585af7450, subnet-0a9778c0dce068da9
     #alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:ap-south-1:804480554088:certificate/1bd71387-77a0-4f53-831e-d1c7bfb991bd"
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
     #alb.ingress.kubernetes.io/ssl-redirect: '443'
